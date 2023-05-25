@@ -28,7 +28,7 @@ def send_suspension_email(user, request):
         })
     print(request)
     email = EmailMultiAlternatives(
-    subject, message, from_email='tabibak@proton.me', to=[user.email, ])
+    subject, message, from_email='tabibak374@gmail.com', to=[user.email, ])
     email.content_subtype = 'html'
     email.send()
 
@@ -42,6 +42,6 @@ def send_activation_email(user, request):
         })
     print(request)
     email = EmailMultiAlternatives(
-    subject, message, from_email='tabibak@proton.me', to=[user.email, ])
+    subject, message, from_email='tabibak374@gmail.com', to=[user.email, ])
     email.content_subtype = 'html'
     email.send()

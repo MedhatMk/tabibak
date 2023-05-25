@@ -23,7 +23,7 @@ class DoctorCreateView(DashboardView, CreateView):
         user = form.save(commit=False)
         user.email = form.instance.email.lower()
         user.username = user.email
-        user.set_password('1111')
+        user.set_password( random_password)
         user.role = 'doctor'
         user.save()
 
