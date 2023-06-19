@@ -6,7 +6,7 @@ from django.template.loader import render_to_string
 
 def send_welcome_email(user, password, request):
     current_site = get_current_site(request)
-    subject = 'Cancer Care System Account Activation'
+    subject = 'Tabibak Account Activation'
     message = render_to_string('account/emails/welcome.html', {
         'user': user.first_name,
         'email': user.email,
