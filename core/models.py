@@ -46,8 +46,3 @@ class Appointment(CommonInfo):
 
     class Meta:
         unique_together = ('doctor', 'date', )
-
-
-
-
-
