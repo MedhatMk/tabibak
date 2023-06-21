@@ -185,3 +185,5 @@ REST_FRAMEWORK = {
 AT_KEY = config('AT_KEY')
 AT_SHORTCODE = config('AT_SHORTCODE')
 AT_USERNAME = config('AT_USERNAME')
+
+DJSMS_BACKEND = 'djsms.backends.FileBasedBackend'
