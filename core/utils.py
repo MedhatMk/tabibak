@@ -24,7 +24,7 @@ def mark_appointment_as_confirmed(request, pk):
     appointment.save()
     humanized_date = appointment.date.strftime("%Y-%m-%d %H:%M:%S")
     subject = 'Appointment Confirmed'
-    message = f"Hey, {appointment.name}.Your appointment has been confirmed, please visit the hospital on {humanized_date}, regards, {current_site.name}."
+    message = f"Hey, {appointment.name}.Your appointment has been confirmed, please visit Dr. {appointment.doctor} on {humanized_date}, regards, {current_site.name}."
     email = EmailMultiAlternatives(
     subject, message, from_email='tabibak@proton.me', to=[appointment.email, ])
     email.content_subtype = 'html'
@@ -69,7 +69,7 @@ def mark_appointment_as_declined(request, pk):
     appointment.confirmed_by = user
     appointment.save()
     subject = 'Appointment Declined'
-    message = f"Hey, {appointment.name}.Your appointment has been declined, please contact the hospital to book another appointment at a convenient date and time, regards"
+    message = f"Hey, {appointment.name}.Your appointment has been declined, please contact  Dr. {appointment.doctor} to book another appointment at a convenient date and time, regards"
     email = EmailMultiAlternatives(
     subject, message, from_email='tabibak@proton.me', to=[appointment.email, ])
     email.content_subtype = 'html'
