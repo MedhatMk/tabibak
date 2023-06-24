@@ -34,3 +34,25 @@ class AppointMentCreateAPIView(APIView):
         serializer = self.serializer_class(appointment)
         return Response(serializer.data)
             
+from django.core.mail import  EmailMultiAlternatives
+from django.contrib import auth, messages
+from django.shortcuts import get_object_or_404, redirect,render,HttpResponse,HttpResponseRedirect
+
+
+def send_contact(request):
+    
+    if request.method == 'POST':
+        # Process the form data
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        subject = request.POST.get('subject')
+    
+    message = f'Name: {name}\nEmail: {email}\nMessage: {message}'
+    email = EmailMultiAlternatives(
+    subject, message, from_email=f'{email}', to=['tabibak374@gmail.com',])
+    email.content_subtype = 'html'
+    email.send()
+    messages.success(request, "Message Sent")
+    
+    return HttpResponse('Thank you for your message!')

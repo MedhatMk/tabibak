@@ -26,7 +26,7 @@ def mark_appointment_as_confirmed(request, pk):
     subject = 'Appointment Confirmed'
     message = f"Hey, {appointment.name}.Your appointment has been confirmed, please visit Dr. {appointment.doctor} on {humanized_date}, regards, {current_site.name}."
     email = EmailMultiAlternatives(
-    subject, message, from_email='tabibak@proton.me', to=[appointment.email, ])
+    subject, message, from_email='tabibak374@gmail.com', to=[appointment.email, ])
     email.content_subtype = 'html'
     email.send()
 
@@ -71,7 +71,7 @@ def mark_appointment_as_declined(request, pk):
     subject = 'Appointment Declined'
     message = f"Hey, {appointment.name}.Your appointment has been declined, please contact  Dr. {appointment.doctor} to book another appointment at a convenient date and time, regards"
     email = EmailMultiAlternatives(
-    subject, message, from_email='tabibak@proton.me', to=[appointment.email, ])
+    subject, message, from_email='tabibak374@gmail.com', to=[appointment.email, ])
     email.content_subtype = 'html'
     email.send()
 
