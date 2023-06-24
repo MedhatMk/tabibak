@@ -3,6 +3,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.conf import settings
 from django.contrib import auth, messages
 from django.shortcuts import get_object_or_404, redirect
+from twilio.rest import Client
 
 from core.models import Appointment
 
@@ -30,11 +31,25 @@ def mark_appointment_as_confirmed(request, pk):
     email.content_subtype = 'html'
     email.send()
 
-    
+    account_sid = 'AC1b91d4d72c87858e5ea3c9f8a125c9c2'
+    auth_token ='b71c6786c304e13769484edf5cc13722'
+    client = Client(account_sid, auth_token)
+    humanized_date = appointment.date.strftime("%Y-%m-%d %H:%M:%S")
+    message = client.messages.create(
+    from_='+14849899629',
+    body=f"Hey, {appointment.name}.Your appointment has been confirmed, please visit the hospital on {humanized_date}, regards, {current_site.name}.",
+    to='+201553424206'
+    )
+  
     messages.success(request, "Appointment Confirmed")
     if user.role == 'admin' or user.role == 'staff':
         return redirect('dashboard:appointments:appointment_details', pk=pk)
     return redirect("doctor_dashboard:appointments:appointment_details", pk=pk)
+
+
+
+
+
 
 
 
