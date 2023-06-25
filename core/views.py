@@ -53,6 +53,6 @@ def send_contact(request):
     subject, message, from_email=f'{email}', to=['tabibak374@gmail.com',])
     email.content_subtype = 'html'
     email.send()
-    messages.success(request, "Message Sent")
-    
+
     return HttpResponse('Thank you for your message!')
+
